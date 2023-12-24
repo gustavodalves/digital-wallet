@@ -1,0 +1,50 @@
+generator client {
+    provider      = "prisma-client-js"
+    binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x", "linux-musl-arm64-openssl-1.1.x"]
+}
+
+datasource db {
+    provider = "mysql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id          String        @id @default(uuid())
+    name        String
+    taxId       String        @unique @map("tax_id")
+    email       String        @unique
+    password    String
+    role        String
+    createdAt   DateTime      @map("created_at")
+    From        Transfer[]    @relation(name: "From")
+    To          Transfer[]    @relation(name: "To")
+    Transaction Transaction[]
+
+    @@map("users")
+}
+
+model Transaction {
+    id        String   @id @default(uuid())
+    value     Float
+    type      String
+    createdAt DateTime @map("created_at")
+
+    user   User   @relation(fields: [userId], references: [id])
+    userId String
+
+    @@map("transactions")
+}
+
+model Transfer {
+    id String @id @default(uuid())
+
+    userFromId String @map("user_from_id")
+    userToId   String @map("user_to_id")
+
+    value Float
+
+    From User @relation(name: "From", fields: [userFromId], references: [id])
+    To   User @relation(name: "To", fields: [userToId], references: [id])
+
+    @@map("transfers")
+}

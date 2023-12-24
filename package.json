@@ -1,0 +1,42 @@
+{
+  "name": "picpay-backend-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gustavodalves/digital-wallet.git",
+  "author": "Gustavo Duarte ALves <gualves2001@icloud.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "dev": "npx tsx watch src/main/main.ts",
+    "build": "tsc",
+    "start": "node dist/src/main/main.js"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.2",
+    "@types/axios": "^0.14.0",
+    "@types/cors": "^2.8.14",
+    "@types/express": "^4.17.20",
+    "@types/jest": "^29.5.4",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.8.4",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "axios": "^1.6.0",
+    "eslint": "^8.0.1",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^29.7.0",
+    "prisma": "^5.5.2",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "*"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.5.2",
+    "amqplib": "^0.10.3",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}
